@@ -3,6 +3,9 @@ package com.shema;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * this is User class associated with the database
+ */
 @Entity
 @Table
 public class User {

@@ -2,6 +2,10 @@ package com.shema;
 
 import javax.persistence.*;
 
+/**
+ * this is Sin class associated with the database
+ */
+
 @Entity
 @Table
 public class Sin {
@@ -10,7 +14,7 @@ public class Sin {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "schoolboy_id",nullable = false)
+    @JoinColumn(name = "schoolboy_id", nullable = false)
     private Schoolboy schoolboy;
 
     @ManyToOne

@@ -1,4 +1,5 @@
 package com.config;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,6 +15,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -25,7 +27,9 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = {
         "com.repository"
 })
-
+/**
+ * class configures the necessary methods for connecting and mapping with the database
+ */
 public class AppConfig {
     @Value("${connection.driver_class}")
     private String driverClass;
@@ -33,7 +37,9 @@ public class AppConfig {
     @Value("${connection.url}")
     private String url;
 
-
+    /**
+     * dataSource is intended to connect to the database
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource driver = new DriverManagerDataSource();
@@ -44,6 +50,9 @@ public class AppConfig {
         return driver;
     }
 
+    /**
+     * @Bean entityManagerFactory that creates a JPA EntityManagerFactory
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -55,6 +64,9 @@ public class AppConfig {
         return localContainerEntityManagerFactoryBean;
     }
 
+    /**
+     * @Bean trasationManager configures a transaction
+     */
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

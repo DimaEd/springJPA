@@ -4,26 +4,30 @@ package com.shema;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * this is Roles class associated with the database
+ */
+
 @Entity
 @Table
 public class Roles {
 
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "roles")
-    private User user;
+    @OneToMany(mappedBy = "roles")
+    private Set<User> user;
 
 
-   private String role;
+    private String role;
 
     public User getUser() {
-        return user;
+        return (User) user;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.user = (Set<User>) user;
     }
 
     public Long getId() {

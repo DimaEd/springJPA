@@ -3,6 +3,10 @@ package com.shema;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * this is Schoolboy class associated with the database
+ */
+
 @Entity
 @Table
 public class Schoolboy {
@@ -12,14 +16,14 @@ public class Schoolboy {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "classes_id",referencedColumnName = "id")
+    @JoinColumn(name = "classes_id", referencedColumnName = "id")
     private Classes classes;
 
-    @OneToMany(mappedBy = "schoolboy",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "schoolboy", fetch = FetchType.LAZY)
     private Set<Sin> sins;
 
     public Set<Sin> getSins() {

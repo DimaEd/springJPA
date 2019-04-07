@@ -2,6 +2,10 @@ package com.shema;
 
 import javax.persistence.*;
 
+/**
+ * this is Classes class associated with the database
+ */
+
 @Entity
 @Table
 public class Classes {

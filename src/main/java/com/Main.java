@@ -3,16 +3,17 @@ package com;
 
 import com.config.AppConfig;
 import com.repository.*;
-import com.shema.Roles;
-import com.shema.Schedule;
-import com.shema.Schoolboy;
-import com.shema.User;
+import com.shema.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
+/**
+ * in the main class the mapping methods are implemented by the example of CRUD operations, named queries and @ Query requests
+ */
 @Component
 
 public class Main {
@@ -31,10 +32,13 @@ public class Main {
     @Autowired
     private GradesRepository gradesRepository;
     @Autowired
-    private DictiplinesRepository disciplinesRepository;
+    private DisciplinesRepository disciplinesRepository;
     @Autowired
     private ClassesRepository classesRepository;
 
+    /**
+     * examples of operations
+     */
     public static void main(String[] arguments) {
         AnnotationConfigApplicationContext annotatedClassApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         Main main = annotatedClassApplicationContext.getBean("main", Main.class);
@@ -49,12 +53,17 @@ public class Main {
         user.setFirst_name("Павел");
         user.setLast_name("Мороз");
         user.setId(4L);
+        user.setRoles(main.getRolesRepository().getOne(1L));
         main.getUserRepository().save(user);
+
         Optional<User> three = main.getUserRepository().findById(4L);
         three.ifPresent(System.out::println);
-      //  Optional<User> two = main.getUserRepository().findByName("Маня");
-     //   two.ifPresent(System.out::println);
 
+        Optional<User> two = Optional.ofNullable(main.getUserRepository().findByRolesId(3L));
+        two.ifPresent(System.out::println);
+
+        List<Disciplines> four = (List<Disciplines>) main.disciplinesRepository.findAllDisciplines();
+        System.out.println(four);
 
 
     }
@@ -115,11 +124,11 @@ public class Main {
         this.gradesRepository = gradesRepository;
     }
 
-    public DictiplinesRepository getDisciplinesRepository() {
+    public DisciplinesRepository getDisciplinesRepository() {
         return disciplinesRepository;
     }
 
-    public void setDisciplinesRepository(DictiplinesRepository disciplinesRepository) {
+    public void setDisciplinesRepository(DisciplinesRepository disciplinesRepository) {
         this.disciplinesRepository = disciplinesRepository;
     }
 

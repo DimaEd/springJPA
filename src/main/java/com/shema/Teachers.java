@@ -3,6 +3,10 @@ package com.shema;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * this is Teachers class associated with the database
+ */
+
 @Entity
 @Table
 
@@ -14,8 +18,8 @@ public class Teachers {
     @OneToMany(mappedBy = "teachers")
     private Set<Disciplines> disciplines;
 
-   @OneToOne()
-   @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @OneToOne()
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @OneToOne(mappedBy = "teachers")

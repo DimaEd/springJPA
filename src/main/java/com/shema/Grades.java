@@ -3,6 +3,10 @@ package com.shema;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * this is Grades class associated with the database
+ */
+
 @Entity
 @Table
 public class Grades {
@@ -16,7 +20,7 @@ public class Grades {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "grades" ,cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "grades", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Schedule> schedule;
     @ManyToOne
     @JoinColumn(name = "teachers_id", nullable = false)

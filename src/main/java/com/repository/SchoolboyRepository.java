@@ -5,12 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/**
+ * SchoolboyRepository provides the necessary search operations
+ */
 public interface SchoolboyRepository extends JpaRepository<Schoolboy, Long> {
-//    List<Schoolboy> findByNameStartsWithParam2(String name);
-//
-//    List<Schoolboy> findByNameStartsWith(String name);
-//
-//    //Stream<User> findByNameStartsWith(String name);
-//
-//    Schoolboy findByName(String name);
+
 }

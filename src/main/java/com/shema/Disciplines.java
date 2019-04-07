@@ -2,6 +2,10 @@ package com.shema;
 
 import javax.persistence.*;
 
+/**
+ * this is Disciplines class associated with the database
+ */
+
 @Entity
 @Table
 public class Disciplines {
@@ -10,11 +14,11 @@ public class Disciplines {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "schedule_id",nullable = false)
+    @JoinColumn(name = "schedule_id", nullable = false)
     private Schedule schedule;
 
     @ManyToOne
-    @JoinColumn(name = "teachers_id",nullable = false)
+    @JoinColumn(name = "teachers_id", nullable = false)
     private Teachers teachers;
 
     public Teachers getTeachers() {

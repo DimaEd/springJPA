@@ -2,6 +2,9 @@ package com.shema;
 
 import javax.persistence.*;
 import java.util.Set;
+/**
+ * this is Schedule class associated with the database
+ */
 
 @Entity
 @Table
